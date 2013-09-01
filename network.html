@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Network Test</title>
+    <script src="jquery-1.8.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="raphael.js" type="text/javascript" charset="utf-8"></script>
+    <script src="sgnet.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css" media="screen">
+        #holder {
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 10px;
+            border: solid 1px #333;
+            background-color: #ffffff;
+            width: 400px;
+        }
+        #info {
+            font-family: 'arial';
+        }
+     </style>
+</head>
+<body>
+<div id="holder"></div>
+<!--<div id="info"></div>-->
+<!--<div id="info2"></div>-->
+
+<script type="text/javascript">
+    var withCoor = true;
+    var nodesJS;
+    if (withCoor) {
+        nodesJS = [["T",10,5],
+            ["C",30,5],
+            ["R",40,85],
+            ["S",60,15],
+            ["O",50,65],
+            ["A",40,185],
+            ["B",80,15],
+            ["G",24,115],
+            ["X",4,185],
+            ["W",30,95],
+            ["H",90,165],
+            ["Y",50,25],
+            ["TC",80,85]];
+
+    } else {
+        nodesJS = [["T"],
+            ["C"],
+            ["R"],
+            ["S"],
+            ["O"],
+            ["A"],
+            ["B"],
+            ["G"],
+            ["X"],
+            ["W"],
+            ["H"],
+            ["Y"],
+            ["TC"]];
+
+    }
+
+    var arcsJS = [["X","C"],["A","X"],["A","R"],["R","O"],["H","W"],["S","B"],["H","TC"],["H","A"],["R","A"],["G","W"],["G","A"],["TC","A"],["B","A"],["B","S"],["B","TC"],["X","A"],["T","C"],["T","R"],["R","C"],["R","TC"],["T","O"],["Y","O"],["O","R"],["TC","C"],["Y","TC"],["Y","S"]];
+    var roadBlkJS = [["T","C"],["TC","A"],["T","R"],["Y","O"]];
+    var flowJS = [["R","A"],["O","R"],["T","O"]];
+
+    myGraph = new SGNet('holder', 400,300);
+
+    myGraph.drawNodes(nodesJS);
+    myGraph.drawArcs(nodesJS, arcsJS);
+    myGraph.drawBlocks(arcsJS, roadBlkJS);
+    myGraph.drawFlow(arcsJS, flowJS);
+
+
+
+//The Following example is intended for networks graphs with nodes representing optimization models
+//    tmp = new SGNet('holder', 400,300);
+//    nodesJS = [];
+//    nodesJS.push(["a"]);
+//    nodesJS.push(['b']);
+//    nodesJS.push(['c']);
+//
+//    arcsJS = [];
+//    arcsJS.push(['a','b']);
+//    arcsJS.push(['c','a']);
+//
+//    tmp.drawNodes(nodesJS,true);
+//    tmp.drawArcs(nodesJS, arcsJS);
+
+</script>
+
+
+
+</body>
+</html>
