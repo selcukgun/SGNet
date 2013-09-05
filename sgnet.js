@@ -129,7 +129,6 @@ function SGNet(holder, w,h) {
             if (!isEmpty(presentStep)){
                 stepList.push(presentStep);
                 stepInd++;
-                //DEBUGconsole.log(JSON.stringify(stepList))
                 presentStep = {};
             }
         }

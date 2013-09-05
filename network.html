@@ -6,12 +6,13 @@
     <script src="raphael.js" type="text/javascript" charset="utf-8"></script>
     <script src="sgnet.js" type="text/javascript" charset="utf-8"></script>
     <style type="text/css" media="screen">
-        #holder {
+        #holder, #holderModel {
             -moz-border-radius: 5px;
             -webkit-border-radius: 10px;
             border: solid 1px #333;
             background-color: #ffffff;
-            width: 400px;
+            width: 450px;
+            margin-top: 20px;
         }
         #info {
             font-family: 'arial';
@@ -20,6 +21,7 @@
 </head>
 <body>
 <div id="holder"></div>
+<div id="holderModel"></div>
 <!--<div id="info"></div>-->
 <!--<div id="info2"></div>-->
 
@@ -62,28 +64,19 @@
     var roadBlkJS = [["T","C"],["TC","A"],["T","R"],["Y","O"]];
     var flowJS = [["R","A"],["O","R"],["T","O"]];
 
-    myGraph = new SGNet('holder', 400,300);
+    myGraph = new SGNet('holder', 450,300);
 
     myGraph.drawNodes(nodesJS);
     myGraph.drawArcs(nodesJS, arcsJS);
     myGraph.drawBlocks(arcsJS, roadBlkJS);
     myGraph.drawFlow(arcsJS, flowJS);
 
-
-
-//The Following example is intended for network graphs with nodes representing optimization models
-//    tmp = new SGNet('holder', 400,300);
-//    nodesJS = [];
-//    nodesJS.push(["a"]);
-//    nodesJS.push(['b']);
-//    nodesJS.push(['c']);
-//
-//    arcsJS = [];
-//    arcsJS.push(['a','b']);
-//    arcsJS.push(['c','a']);
-//
-//    tmp.drawNodes(nodesJS,true);
-//    tmp.drawArcs(nodesJS, arcsJS);
+    var mdlInfo = [{"modelName":"model1","input files":["a.csv", "b.csv", "c.csv", "d.csv"], "output files":["result.txt", "out.csv"]},{"modelName":"model2","input files":["a.csv", "b.csv", "c.csv", "d.csv"], "output files":["result.txt", "out.csv"]}];
+    var mdlNodes = [];
+    mdlNodes.push([mdlInfo[0].modelName, mdlInfo[0]]);
+    mdlNodes.push([mdlInfo[1].modelName, mdlInfo[1]]);
+    modelGraph = new SGNet("holderModel", 450, 300);
+    modelGraph.drawNodes(mdlNodes, true);
 
 </script>
 
