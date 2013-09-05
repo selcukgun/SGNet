@@ -1,6 +1,6 @@
 SGNet provides network graph visualization including comprehensive representation for optimization models.
 
-I have included the following files:
+Files:
 
  sgnet.js        -> SGNet implementation
  network.html    -> Demo page
