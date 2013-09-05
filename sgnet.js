@@ -1,4 +1,3 @@
-
 /**
  * @class SGNet
  * Main class that contains the GUI functionality of Super-system design and Network Graph
@@ -8,7 +7,6 @@
  * @param w Width
  * @param h Height
  */
-
 
 function SGNet(holder, w,h) {
     /** list for nodes */
@@ -21,7 +19,10 @@ function SGNet(holder, w,h) {
     var rad;
     /** paper (Raphael) */
     var r = Raphael(holder, w,h);
-    $('#'+holder).bind('contextmenu',function(e){return false;});
+    (function($){
+        $('#'+holder).bind('contextmenu',function(e){return false;});
+    })(jQuery);
+
     /** @member SGNet
      * Provides rounded rectange created with path
      * @param x Coordinate  of center (x)
@@ -584,7 +585,7 @@ function SGNet(holder, w,h) {
 //
 
         if (info){
-
+            (function($){
             $.each(info, function(key, value){
                 if (key =='modelName') {
                     name = value;
@@ -607,6 +608,7 @@ function SGNet(holder, w,h) {
                     else numElOut++;
                 }
             });
+            })(jQuery);
         } else {
             designButton.hide();
             designIcon.hide();
@@ -662,6 +664,7 @@ function SGNet(holder, w,h) {
 
 
         if (info){
+            (function($){
             $.each(info, function(key, value){
                 //DEBUGconsole.log("#key:", key);
                 //DEBUGconsole.log("#value:", value);
@@ -718,6 +721,7 @@ function SGNet(holder, w,h) {
                     }
                 }
             });
+            })(jQuery);
         }
 
 
@@ -1217,7 +1221,7 @@ function SGNet(holder, w,h) {
 
 
         }
-        $('#info').html(nodeString);
+//        $('#info').html(nodeString);
         nodeSet.animate({'stroke-width': 2, opacity:1},200);
 
 
@@ -1337,7 +1341,7 @@ function SGNet(holder, w,h) {
         }
         arcSet.attr({opacity:.5, 'stroke-width': 3, 'arrow-end': 'block-medium-medium',
             'arrow-start': 'oval-narrow-short'}).toBack();
-        $('#info2').html("nodes: " + nodeString +'<br>'+ "arcs:"+arcString);
+//        $('#info2').html("nodes: " + nodeString +'<br>'+ "arcs:"+arcString);
 
     };
 
@@ -1383,10 +1387,4 @@ function SGNet(holder, w,h) {
     };
     //drawBlocks(arcsJS, roadBlkJS);
 
-
-
-
-
-
-
-};
+}
